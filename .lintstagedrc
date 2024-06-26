@@ -1,0 +1,4 @@
+{
+    "./src/**/*.{ts,astro}": "npm run format",
+    "./src/**/*.{ts,astro}": "npm run lint"
+}
