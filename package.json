@@ -12,7 +12,10 @@
     "format": "prettier --write src",
     "fix": "npm run lint && npm run format",
     "prepare": "husky",
-    "commitlint": "commitlint --edit"
+    "commitlint": "commitlint --edit",
+    "test:unit": "vitest --environment jsdom",
+    "test:coverage": "npm run test:unit -- --coverage",
+    "test:report": "npm run test:coverage -- --ui --api 9527"
   },
   "dependencies": {
     "@astrojs/check": "^0.7.0",
@@ -24,17 +27,24 @@
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
+    "@testing-library/vue": "^8.1.0",
     "@typescript-eslint/parser": "^7.14.1",
+    "@vitejs/plugin-vue": "^5.0.5",
+    "@vitest/coverage-v8": "^1.6.0",
+    "@vitest/ui": "^1.6.0",
+    "@vue/test-utils": "^2.4.6",
     "eslint": "^8.57.0",
     "eslint-plugin-astro": "^1.2.2",
     "eslint-plugin-jsx-a11y": "^6.9.0",
     "husky": "^9.0.11",
+    "jsdom": "^24.1.0",
     "lint-staged": "^15.2.7",
     "postcss-html": "^1.7.0",
     "prettier": "^3.3.2",
     "prettier-plugin-astro": "^0.14.0",
     "stylelint-config-html": "^1.1.0",
     "stylelint-config-recess-order": "^5.0.1",
-    "stylelint-config-standard-scss": "^13.1.0"
+    "stylelint-config-standard-scss": "^13.1.0",
+    "vitest": "^1.6.0"
   }
 }
