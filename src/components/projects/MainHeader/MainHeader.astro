@@ -1,0 +1,81 @@
+---
+import { Image } from "astro:assets";
+import LogoImage from "../../../assets/images/logo.png";
+import BasicButton from "@/components/uiParts/BasicButton/BasicButton.astro";
+---
+
+<header class="MainHeader">
+  <div class="MainHeader__inner">
+    <div class="MainHeader__logo">
+      <a href="/">
+        <Image src={LogoImage} alt="Site Logo" class="MainHeader__logo-img" />
+      </a>
+    </div>
+    <nav class="MainHeader__nav">
+      <ul class="MainHeader__menu">
+        <li class="MainHeader__menu-item">
+          <a href="/" class="MainHeader__menu-link"> Home </a>
+        </li>
+        <li class="MainHeader__menu-item">
+          <a href="/about" class="MainHeader__menu-link">About</a>
+        </li>
+        <li class="MainHeader__menu-item">
+          <a href="/service" class="MainHeader__menu-link"> Service </a>
+        </li>
+        <li class="MainHeader__menu-item">
+          <a href="/blog/list" class="MainHeader__menu-link">Blog</a>
+        </li>
+        <li class="MainHeader__menu-item">
+          <BasicButton href="/contact" class:list="MainHeader__menu-link">
+            Contact
+          </BasicButton>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style lang="scss" scoped>
+  .MainHeader {
+    padding: 1rem;
+    background-color: #ffffff;
+    color: #fff;
+    border-bottom: 1px solid #323232;
+    box-shadow: 2px 2px 2px 1px #32323230;
+    &__inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+    &__logo {
+      padding: 0.5rem 1rem;
+    }
+    &__logo-img {
+      max-height: 50px;
+    }
+    &__menu {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 0;
+      padding: 0;
+    }
+    &__menu-link {
+      color: var(--bs-primary-text-emphasis);
+      text-decoration: none;
+      border-radius: 2rem;
+      padding: 0.5rem 1rem;
+      transition: all 0.3s ease-in-out;
+      &:hover {
+        background-color: #323232;
+        color: #ffffff;
+      }
+      &:not(.BasicButton) {
+        border: 1px solid #323232;
+      }
+    }
+  }
+</style>
