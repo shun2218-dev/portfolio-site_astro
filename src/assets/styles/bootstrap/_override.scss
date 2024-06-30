@@ -1,1 +1,6 @@
-$primary: #f8ef6f;
+:root,
+[data-bs-theme="light"],
+[data-bs-theme="dark"] {
+  --bs-primary: #f8ef6f !important;
+  --bs-border-width: 2px;
+}
