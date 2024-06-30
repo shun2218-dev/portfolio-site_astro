@@ -1,0 +1,25 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import BaseButton from "@/components/elements/BaseButton/BaseButton.astro";
+import BaseLink from "@/components/elements/BaseLink/BaseLink.astro";
+type Props = HTMLAttributes<"button"> & {
+  href?: HTMLAttributes<"a">["href"];
+  target?: HTMLAttributes<"a">["target"];
+};
+const { href, target, ...attrs } = Astro.props;
+const isAnchor = !!href;
+---
+
+<>
+  {
+    isAnchor ? (
+      <BaseLink href={href} target={target} {...attrs}>
+        <slot />
+      </BaseLink>
+    ) : (
+      <BaseButton {...attrs}>
+        <slot />
+      </BaseButton>
+    )
+  }
+</>
