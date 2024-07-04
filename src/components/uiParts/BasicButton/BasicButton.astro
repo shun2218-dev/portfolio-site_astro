@@ -30,23 +30,22 @@ const { variant = "contained", full, fit, disabled, ...attrs } = Astro.props;
   $disabled-color: #cbcbcb;
   $border-width: 2px;
   .BasicButton {
-    border: $border-width solid $primary;
+    border: $border-width solid var(--bs-primary);
     display: grid;
     width: 100%;
     max-width: 25rem;
     padding: 0.5rem 1rem;
     font-weight: bold;
     text-align: center;
-    border-radius: 2rem;
 
     &.variant {
       &-contained {
-        background-color: $primary;
+        background-color: var(--bs-primary);
         transition: background-color 0.3s ease-in-out;
         color: #ffffff;
 
         &:hover {
-          background-color: darken($color: $primary, $amount: 20);
+          background-color: lighten($color: #323232, $amount: 20);
         }
 
         &.disabled {
@@ -63,7 +62,7 @@ const { variant = "contained", full, fit, disabled, ...attrs } = Astro.props;
         color: $font-color;
 
         &:hover {
-          background-color: lighten($color: $primary, $amount: 25);
+          background-color: lighten($color: #323232, $amount: 25);
         }
 
         &.disabled {
