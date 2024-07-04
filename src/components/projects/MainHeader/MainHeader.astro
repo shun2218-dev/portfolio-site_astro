@@ -40,7 +40,6 @@ import BasicButton from "@/components/uiParts/BasicButton/BasicButton.astro";
     padding: 1rem;
     background-color: #ffffff;
     color: #fff;
-    border-bottom: 1px solid #323232;
     box-shadow: 2px 2px 2px 1px #32323230;
     &__inner {
       display: flex;
@@ -57,24 +56,28 @@ import BasicButton from "@/components/uiParts/BasicButton/BasicButton.astro";
     }
     &__menu {
       list-style: none;
-      display: flex;
       align-items: center;
       gap: 1rem;
       margin: 0;
       padding: 0;
+      display: none;
     }
     &__menu-link {
       color: var(--bs-primary-text-emphasis);
       text-decoration: none;
-      border-radius: 2rem;
+      // border-radius: 2rem;
       padding: 0.5rem 1rem;
       transition: all 0.3s ease-in-out;
-      &:hover {
-        background-color: #323232;
-        color: #ffffff;
-      }
       &:not(.BasicButton) {
-        border: 1px solid #323232;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    @media screen and (min-width: 768px) {
+      &__menu {
+        display: flex;
       }
     }
   }
