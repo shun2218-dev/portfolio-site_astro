@@ -12,7 +12,9 @@ const { home } = Astro.props;
   <div class="MainFooter__inner">
     <div class="MainFooter__content">
       <div class="MainFooter__logo">
-        <Image src={LogoImage} alt="Site Logo" class="MainFooter__logo-img" />
+        <a href="/">
+          <Image src={LogoImage} alt="Site Logo" class="MainFooter__logo-img" />
+        </a>
       </div>
       <ul class="MainFooter__content-links">
         <li class="MainFooter__content-item">
@@ -25,7 +27,7 @@ const { home } = Astro.props;
           <a href="/" class="MainFooter__content-itemLink">リンク3</a>
         </li>
       </ul>
-      <SNSIcons />
+      {home && <SNSIcons />}
     </div>
     <div class="MainFooter__credit">
       <small class="MainFooter__copyright">
@@ -40,12 +42,13 @@ const { home } = Astro.props;
             <a href="/about" class="MainFooter__menu-link">About</a>
           </li>
           <li class="MainFooter__menu-item">
-            <a href="/services" class="MainFooter__menu-link"> Services </a>
+            <a href="/service" class="MainFooter__menu-link"> Services </a>
           </li>
           <li class="MainFooter__menu-item">
             <a href="/contact" class="MainFooter__menu-link"> Contact </a>
           </li>
         </ul>
+        {!home && <SNSIcons />}
       </nav>
     </div>
   </div>
@@ -61,19 +64,21 @@ const { home } = Astro.props;
       justify-content: space-between;
       align-items: center;
       flex-direction: column;
-      max-width: 90%;
       margin: 0 auto;
     }
     &__content {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-direction: column;
       width: 100%;
       padding: 4rem 0;
+      row-gap: 1.5rem;
     }
     &__content-links {
       list-style: none;
       display: flex;
+      flex-direction: column;
       gap: 1rem;
       margin: 0;
       padding: 0;
@@ -96,10 +101,18 @@ const { home } = Astro.props;
       border-top: 1px solid #323232;
       width: 100%;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: space-between;
-      flex-direction: column;
+      flex-direction: column-reverse;
       padding: 1rem 0;
+      row-gap: 1rem;
+    }
+    &__nav {
+      display: flex;
+      flex-grow: 1;
+      flex-direction: column-reverse;
+      justify-content: space-between;
+      align-items: flex-start;
       row-gap: 1rem;
     }
     &__menu {
@@ -115,22 +128,48 @@ const { home } = Astro.props;
       color: var(--bs-primary-text-emphasis);
       text-decoration: none;
       border-radius: 2rem;
-      padding: 0.5rem 1rem;
+
       transition: all 0.3s ease-in-out;
       text-decoration: 1px underline #323232;
     }
+    &.home {
+      .MainFooter__credit {
+        align-items: center;
+      }
+    }
     @media screen and (min-width: 768px) {
-      padding: 2rem 5rem 5rem;
+      padding: 2rem 1rem 5rem;
       &__inner {
         max-width: 1440px;
+      }
+      &__content {
+        flex-direction: row;
+      }
+      &__content-links {
+        flex-direction: row;
       }
       &__credit {
         justify-content: center;
         flex-direction: row;
         align-items: flex-end;
       }
+      &__nav {
+        align-items: flex-end;
+        flex-direction: row;
+      }
       &__menu {
         flex-direction: row;
+      }
+      &__menu-link {
+        padding: 0.5rem 1rem;
+      }
+      &.home {
+        .MainFooter__credit {
+          justify-content: center;
+        }
+        .MainFooter__nav {
+          flex-grow: initial;
+        }
       }
     }
   }
