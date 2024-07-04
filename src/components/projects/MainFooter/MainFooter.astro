@@ -68,12 +68,12 @@ const { home } = Astro.props;
     }
     &__content {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: space-between;
-      flex-direction: column;
       width: 100%;
       padding: 4rem 0;
       row-gap: 1.5rem;
+      flex-direction: column;
     }
     &__content-links {
       list-style: none;
@@ -90,9 +90,6 @@ const { home } = Astro.props;
       &:hover {
         text-decoration: underline;
       }
-    }
-    &__logo {
-      padding: 0.5rem 1rem;
     }
     &__logo-img {
       max-height: 50px;
@@ -118,7 +115,7 @@ const { home } = Astro.props;
     &__menu {
       list-style: none;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       margin: 0;
       padding: 0;
       flex-direction: column;
@@ -133,17 +130,22 @@ const { home } = Astro.props;
       text-decoration: 1px underline #323232;
     }
     &.home {
-      .MainFooter__credit {
-        align-items: center;
+      .MainFooter__content {
+        flex-direction: column;
+      }
+      .MainFooter__content-links {
+        flex-direction: column;
       }
     }
     @media screen and (min-width: 768px) {
       padding: 2rem 1rem 5rem;
+
       &__inner {
         max-width: 1440px;
       }
       &__content {
         flex-direction: row;
+        align-items: center;
       }
       &__content-links {
         flex-direction: row;
@@ -164,6 +166,12 @@ const { home } = Astro.props;
         padding: 0.5rem 1rem;
       }
       &.home {
+        .MainFooter__content {
+          flex-direction: row;
+        }
+        .MainFooter__content-links {
+          flex-direction: row;
+        }
         .MainFooter__credit {
           justify-content: center;
         }
