@@ -2,10 +2,9 @@
 import { Image } from "astro:assets";
 import LogoImage from "../../../assets/images/logo.png";
 import SNSIcons from "@/components/uiParts/SNSIcons/SNSIcons.astro";
-const isTopPage = Astro.url.pathname === "/";
 ---
 
-<footer class:list={["MainFooter", { home: isTopPage }]}>
+<footer class="MainFooter">
   <div class="MainFooter__inner">
     <div class="MainFooter__content">
       <div class="MainFooter__logo">
@@ -24,7 +23,6 @@ const isTopPage = Astro.url.pathname === "/";
           <a href="/" class="MainFooter__content-itemLink">リンク3</a>
         </li>
       </ul>
-      {isTopPage && <SNSIcons />}
     </div>
     <div class="MainFooter__credit">
       <small class="MainFooter__copyright">
@@ -45,7 +43,7 @@ const isTopPage = Astro.url.pathname === "/";
             <a href="/contact" class="MainFooter__menu-link"> Contact </a>
           </li>
         </ul>
-        {!isTopPage && <SNSIcons />}
+        <SNSIcons />
       </nav>
     </div>
   </div>
@@ -122,18 +120,9 @@ const isTopPage = Astro.url.pathname === "/";
       color: var(--bs-primary-text-emphasis);
       text-decoration: none;
       border-radius: 2rem;
-
-      transition: all 0.3s ease-in-out;
       text-decoration: 1px underline #323232;
     }
-    &.home {
-      .MainFooter__content {
-        flex-direction: column;
-      }
-      .MainFooter__content-links {
-        flex-direction: column;
-      }
-    }
+
     @media screen and (min-width: 768px) {
       padding: 2rem 1rem 5rem;
 
@@ -161,20 +150,6 @@ const isTopPage = Astro.url.pathname === "/";
       }
       &__menu-link {
         padding: 0.5rem 1rem;
-      }
-      &.home {
-        .MainFooter__content {
-          flex-direction: row;
-        }
-        .MainFooter__content-links {
-          flex-direction: row;
-        }
-        .MainFooter__credit {
-          justify-content: center;
-        }
-        .MainFooter__nav {
-          flex-grow: initial;
-        }
       }
     }
   }
