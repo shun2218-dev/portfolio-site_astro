@@ -2,6 +2,7 @@
 import { ViewTransitions } from "astro:transitions";
 import "../../assets/styles/index.scss";
 import MainHeader from "@/components/projects/MainHeader/MainHeader.astro";
+import MainContainer from "@/components/layouts/MainContainer/MainContainer.astro";
 import MainFooter from "@/components/projects/MainFooter/MainFooter.astro";
 interface Props {
   title?: string;
@@ -24,11 +25,11 @@ const siteTitle = "Demo Site";
   </head>
   <body>
     <MainHeader />
-    <main>
+    <MainContainer>
       <slot />
-    </main>
+    </MainContainer>
     <MainFooter />
-    <style is:global>
+    <style is:global lang="scss">
       html {
         font-family: system-ui, sans-serif;
         background: #13151a;

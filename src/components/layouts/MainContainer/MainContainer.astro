@@ -1,0 +1,18 @@
+---
+
+---
+
+<main class="MainContainer">
+  <div class="MainContainer__inner">
+    <slot />
+  </div>
+</main>
+<style lang="scss" scoped>
+  .MainContainer {
+    &__inner {
+      max-width: var(--content-max-width);
+      margin: 0 auto;
+      padding: 1rem;
+    }
+  }
+</style>
