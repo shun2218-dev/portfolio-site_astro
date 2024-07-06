@@ -24,11 +24,17 @@ const siteTitle = "Demo Site";
     <ViewTransitions />
   </head>
   <body>
-    <MainHeader />
-    <MainContainer>
-      <slot />
-    </MainContainer>
-    <MainFooter />
+    <Fragment slot="header">
+      <MainHeader />
+    </Fragment>
+    <Fragment slot="content">
+      <MainContainer>
+        <slot />
+      </MainContainer>
+    </Fragment>
+    <Fragment slot="footer">
+      <MainFooter />
+    </Fragment>
     <style is:global lang="scss">
       html {
         font-family: system-ui, sans-serif;
