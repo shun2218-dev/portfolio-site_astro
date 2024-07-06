@@ -5,10 +5,9 @@ import MainHeader from "@/components/projects/MainHeader/MainHeader.astro";
 import MainFooter from "@/components/projects/MainFooter/MainFooter.astro";
 interface Props {
   title: string;
-  home?: boolean;
 }
 
-const { title, home = false } = Astro.props;
+const { title } = Astro.props;
 ---
 
 <!doctype html>
@@ -27,7 +26,7 @@ const { title, home = false } = Astro.props;
     <main>
       <slot />
     </main>
-    <MainFooter {home} />
+    <MainFooter />
     <style is:global>
       html {
         font-family: system-ui, sans-serif;

@@ -2,13 +2,10 @@
 import { Image } from "astro:assets";
 import LogoImage from "../../../assets/images/logo.png";
 import SNSIcons from "@/components/uiParts/SNSIcons/SNSIcons.astro";
-type Props = {
-  home: boolean;
-};
-const { home } = Astro.props;
+const isTopPage = Astro.url.pathname === "/";
 ---
 
-<footer class:list={["MainFooter", { home: home }]}>
+<footer class:list={["MainFooter", { home: isTopPage }]}>
   <div class="MainFooter__inner">
     <div class="MainFooter__content">
       <div class="MainFooter__logo">
@@ -27,7 +24,7 @@ const { home } = Astro.props;
           <a href="/" class="MainFooter__content-itemLink">リンク3</a>
         </li>
       </ul>
-      {home && <SNSIcons />}
+      {isTopPage && <SNSIcons />}
     </div>
     <div class="MainFooter__credit">
       <small class="MainFooter__copyright">
@@ -48,7 +45,7 @@ const { home } = Astro.props;
             <a href="/contact" class="MainFooter__menu-link"> Contact </a>
           </li>
         </ul>
-        {!home && <SNSIcons />}
+        {!isTopPage && <SNSIcons />}
       </nav>
     </div>
   </div>
