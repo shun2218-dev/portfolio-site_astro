@@ -1,0 +1,54 @@
+---
+import { ViewTransitions } from "astro:transitions";
+import "../../../assets/styles/index.scss";
+import MainHeader from "@/components/projects/MainHeader/MainHeader.astro";
+import MainContainer from "@/components/layouts/MainContainer/MainContainer.astro";
+import MainFooter from "@/components/projects/MainFooter/MainFooter.astro";
+interface Props {
+  title?: string;
+}
+
+const { title } = Astro.props;
+const siteTitle = "Demo Site";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title ? `${title} | ${siteTitle}` : siteTitle}</title>
+    <ViewTransitions />
+  </head>
+  <body>
+    <slot name="header">
+      <MainHeader />
+    </slot>
+    <slot name="content">
+      <MainContainer>
+        <slot />
+      </MainContainer>
+    </slot>
+    <slot name="footer">
+      <MainFooter />
+    </slot>
+    <style is:global lang="scss">
+      html {
+        font-family: system-ui, sans-serif;
+        background: #13151a;
+        background-size: 224px;
+      }
+      html,
+      body,
+      main {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        height: 100%;
+      }
+    </style>
+  </body>
+</html>

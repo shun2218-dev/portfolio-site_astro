@@ -1,0 +1,3 @@
+{
+  "src/**/*.{ts,astro}": ["npm run format", "npm run lint"]
+}

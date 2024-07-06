@@ -1,0 +1,62 @@
+---
+import { Image } from "astro:assets";
+import FacebookIcon from "../../../assets/images/sns/Facebook.svg";
+import InstagramIcon from "../../../assets/images/sns/Instagram.svg";
+import XIcon from "../../../assets/images/sns/X.svg";
+import LinkedInIcon from "../../../assets/images/sns/LinkedIn.svg";
+import YouTubeIcon from "../../../assets/images/sns/Youtube.svg";
+type SNSIcon = {
+  src: ImageMetadata;
+  alt: string;
+};
+
+const SNS_LIST: SNSIcon[] = [
+  { src: FacebookIcon, alt: "Facebook" },
+  { src: InstagramIcon, alt: "Instagram" },
+  { src: XIcon, alt: "X" },
+  { src: LinkedInIcon, alt: "LinkedIn" },
+  { src: YouTubeIcon, alt: "YouTube" },
+];
+---
+
+<div class="SNSIcons">
+  <div class="SNSIcons__inner">
+    <ul class="SNSIcons__list">
+      {
+        SNS_LIST.map(({ src, alt }) => (
+          <li class="SNSIcons__item">
+            <a href="/" class="SNSIcons__link">
+              <Image
+                src={src}
+                alt={alt}
+                class="SNSIcons__icon"
+                width={26}
+                height={26}
+              />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</div>
+<style lang="scss" scoped>
+  .SNSIcons {
+    &__list {
+      list-style: none;
+      display: flex;
+      column-gap: 0.5rem;
+      margin: 0;
+      padding: 0;
+    }
+    &__item {
+      padding: 3px;
+    }
+    &__link {
+      height: 100%;
+    }
+    &__icon {
+      vertical-align: bottom;
+    }
+  }
+</style>

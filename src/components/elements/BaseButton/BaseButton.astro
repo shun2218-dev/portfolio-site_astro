@@ -1,0 +1,12 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"button"> & {
+  type?: HTMLAttributes<"button">["type"];
+};
+const { type = "button", ...attrs } = Astro.props;
+---
+
+<button {...attrs} type={type}>
+  <slot />
+</button>

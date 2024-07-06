@@ -1,0 +1,181 @@
+---
+import { Image } from "astro:assets";
+import LogoImage from "../../../assets/images/logo.png";
+import SNSIcons from "@/components/uiParts/SNSIcons/SNSIcons.astro";
+const isTopPage = Astro.url.pathname === "/";
+---
+
+<footer class:list={["MainFooter", { home: isTopPage }]}>
+  <div class="MainFooter__inner">
+    <div class="MainFooter__content">
+      <div class="MainFooter__logo">
+        <a href="/">
+          <Image src={LogoImage} alt="Site Logo" class="MainFooter__logo-img" />
+        </a>
+      </div>
+      <ul class="MainFooter__content-links">
+        <li class="MainFooter__content-item">
+          <a href="/" class="MainFooter__content-itemLink">リンク1</a>
+        </li>
+        <li class="MainFooter__content-item">
+          <a href="/" class="MainFooter__content-itemLink">リンク2</a>
+        </li>
+        <li class="MainFooter__content-item">
+          <a href="/" class="MainFooter__content-itemLink">リンク3</a>
+        </li>
+      </ul>
+      {isTopPage && <SNSIcons />}
+    </div>
+    <div class="MainFooter__credit">
+      <small class="MainFooter__copyright">
+        &copy; 2024 portfolio site. All rights reserved.
+      </small>
+      <nav class="MainFooter__nav">
+        <ul class="MainFooter__menu">
+          <li class="MainFooter__menu-item">
+            <a href="/" class="MainFooter__menu-link"> Home </a>
+          </li>
+          <li class="MainFooter__menu-item">
+            <a href="/about" class="MainFooter__menu-link">About</a>
+          </li>
+          <li class="MainFooter__menu-item">
+            <a href="/service" class="MainFooter__menu-link"> Services </a>
+          </li>
+          <li class="MainFooter__menu-item">
+            <a href="/contact" class="MainFooter__menu-link"> Contact </a>
+          </li>
+        </ul>
+        {!isTopPage && <SNSIcons />}
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<style lang="scss" scoped>
+  .MainFooter {
+    padding: 2rem 1rem 5rem;
+    background-color: #ffffff;
+    color: #323232;
+    &__inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: column;
+      margin: 0 auto;
+    }
+    &__content {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      width: 100%;
+      padding: 4rem 0;
+      row-gap: 1.5rem;
+      flex-direction: column;
+    }
+    &__content-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin: 0;
+      padding: 0;
+    }
+    &__content-itemLink {
+      color: #323232;
+      text-decoration: none;
+      transition: text-decoration 0.3s ease-in-out;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    &__logo-img {
+      max-height: 50px;
+    }
+    &__credit {
+      border-top: 1px solid #323232;
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-direction: column-reverse;
+      padding: 1rem 0;
+      row-gap: 1rem;
+    }
+    &__nav {
+      display: flex;
+      flex-grow: 1;
+      flex-direction: column-reverse;
+      justify-content: space-between;
+      align-items: flex-start;
+      row-gap: 1rem;
+    }
+    &__menu {
+      list-style: none;
+      display: flex;
+      align-items: flex-start;
+      margin: 0;
+      padding: 0;
+      flex-direction: column;
+      row-gap: 0.5rem;
+    }
+    &__menu-link {
+      color: var(--bs-primary-text-emphasis);
+      text-decoration: none;
+      border-radius: 2rem;
+
+      transition: all 0.3s ease-in-out;
+      text-decoration: 1px underline #323232;
+    }
+    &.home {
+      .MainFooter__content {
+        flex-direction: column;
+      }
+      .MainFooter__content-links {
+        flex-direction: column;
+      }
+    }
+    @media screen and (min-width: 768px) {
+      padding: 2rem 1rem 5rem;
+
+      &__inner {
+        max-width: var(--content-max-width);
+      }
+      &__content {
+        flex-direction: row;
+        align-items: center;
+      }
+      &__content-links {
+        flex-direction: row;
+      }
+      &__credit {
+        justify-content: center;
+        flex-direction: row;
+        align-items: flex-end;
+      }
+      &__nav {
+        align-items: flex-end;
+        flex-direction: row;
+      }
+      &__menu {
+        flex-direction: row;
+      }
+      &__menu-link {
+        padding: 0.5rem 1rem;
+      }
+      &.home {
+        .MainFooter__content {
+          flex-direction: row;
+        }
+        .MainFooter__content-links {
+          flex-direction: row;
+        }
+        .MainFooter__credit {
+          justify-content: center;
+        }
+        .MainFooter__nav {
+          flex-grow: initial;
+        }
+      }
+    }
+  }
+</style>
