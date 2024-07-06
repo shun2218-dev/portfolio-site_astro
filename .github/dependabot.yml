@@ -11,10 +11,12 @@ updates:
       interval: "weekly"
     commit-message:
       prefix: "dependabot"
-    open-pull-requests-limit: 10
     allow:
-      - dependency-type: "security"
-    automerge:
-      enable: true
-    reviewers: []
-    assignees: []
+      - update-type: "security"
+    reviewers:
+      - ""
+    assignees:
+      - ""
+    automerge: true
+    labels:
+      - "dependencies"
